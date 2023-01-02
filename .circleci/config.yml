@@ -31,7 +31,6 @@ aliases:
       command: |
         sudo apt-get -y -qq update
         sudo apt-get install -y awscli
-        sudo apt-get install -y python-pip python-dev build-essential
   - &build-project
     run:
       name: Build Project
