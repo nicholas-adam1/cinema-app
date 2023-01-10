@@ -38,7 +38,7 @@ const MainContent = () => {
           <Paginate paginate={paginate} currentPage={currentPage} totalPages={10} />
         </div>
       </div>
-      <Grid images={images}/>
+      <Grid images={images} />
     </div>
   );
 };
