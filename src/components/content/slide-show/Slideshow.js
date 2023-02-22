@@ -15,6 +15,10 @@ const Slideshow = (props) => {
   let currentSlideIndex = 0;
 
   useEffect(() => {
+    setState((prev) => ({
+      slideShow: images[0],
+      slideIndex: 0
+    }));
     if (auto) {
       const timeInterval = setInterval(() => {
         autoMoveSlide();
@@ -26,7 +30,7 @@ const Slideshow = (props) => {
         clearInterval(sliderInterval);
       };
     }
-  }, []);
+  }, [images]);
 
   const autoMoveSlide = () => {
     let lastIndex = 0;
