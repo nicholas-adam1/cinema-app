@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 // eslint-disable-next-line no-unused-vars
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import './Grid.scss';
 import { IMAGE_URL } from '../../../services/movies.service';
 import LazyImage from '../../lazy-image/LazyImage';
@@ -17,6 +19,11 @@ const Grid = (props) => {
     setMovieData(list);
   }, [list]);
 
+  const formatMovieTitle = (title) => {
+    const titleStr = title.toLowerCase();
+    return titleStr.replace(/ /g, '-');
+  };
+
   return (
     <>
       <div className="grid">
@@ -24,7 +31,9 @@ const Grid = (props) => {
           <div key={i}>
             <LazyImage className="grid-cell" src={`${IMAGE_URL}${data.poster_path}`} alt="placeholder">
               <div className="grid-read-more">
-                <button className="grid-cell-button">Read More</button>
+                <button className="grid-cell-button">
+                  <Link to={`/${data.id}/${formatMovieTitle(data.title)}/details`}>Read More</Link>
+                </button>
               </div>
               <div className="grid-detail">
                 <span className="grid-detail-title"> {data.title} </span>
